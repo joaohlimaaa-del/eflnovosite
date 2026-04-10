@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço Fátima Lima — A Casa do Design Autoral Brasileiro</title>
+  <style>
+    :root {
+      --black: #000000;
+      --dark: #111111;
+      --gray-900: #1A1A1A;
+      --gray-800: #222222;
+      --gray-700: #333333;
+      --gray-600: #444444;
+      --gray-500: #666666;
+      --gray-400: #888888;
+      --gray-300: #AAAAAA;
+      --gray-200: #CCCCCC;
+      --gray-100: #E5E5E5;
+      --gray-50: #F5F5F5;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--gray-700);
+      background: var(--white);
+      line-height: 1.7;
+      font-size: 16px;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(24px);
+      height: 64px;
+    }
+
+    nav .nav-logo img {
+      height: 24px;
+      transition: opacity 0.3s;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover { color: var(--white); }
+
+    nav .nav-cta {
+      padding: 10px 28px;
+      border: 1px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    nav .nav-cta:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.9) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-content .logo-hero {
+      max-width: 520px;
+      width: 75vw;
+      margin-bottom: 48px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 200;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-content p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 16px 48px;
+      background: var(--white);
+      color: var(--black);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--gray-100);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      padding: 16px 48px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--white);
+    }
+
+    .scroll-line {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      z-index: 2;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 140px 48px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-narrow {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-gray {
+      background: var(--gray-50);
+    }
+
+    .label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gray-400);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .section-dark .label { color: var(--gray-500); }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 200;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 32px;
+      letter-spacing: -1px;
+    }
+
+    .section-dark h2 { color: var(--white); }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--black);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .section-dark h3 { color: var(--white); }
+
+    p { margin-bottom: 20px; }
+    .section-dark p { color: rgba(255,255,255,0.55); }
+
+    .lead {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--gray-600);
+    }
+
+    .section-dark .lead { color: rgba(255,255,255,0.7); }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--black);
+      margin: 48px 0;
+    }
+
+    .section-dark .divider { background: rgba(255,255,255,0.2); }
+
+    blockquote {
+      font-size: 28px;
+      font-weight: 200;
+      line-height: 1.5;
+      color: var(--gray-800);
+      border-left: 2px solid var(--black);
+      padding-left: 32px;
+      margin: 56px 0;
+    }
+
+    .section-dark blockquote {
+      color: rgba(255,255,255,0.8);
+      border-left-color: var(--white);
+    }
+
+    /* ===== GRID LAYOUTS ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    /* ===== PLAN STEPS ===== */
+    .step-card {
+      text-align: center;
+      padding: 48px 32px;
+      border: 1px solid var(--gray-100);
+      transition: border-color 0.3s;
+    }
+
+    .step-card:hover { border-color: var(--black); }
+
+    .step-number {
+      font-size: 56px;
+      font-weight: 100;
+      color: var(--gray-200);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .step-card h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin: 0;
+    }
+
+    /* ===== DESIGNER GRID ===== */
+    .designer-card {
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .designer-card h3 {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    .designer-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin: 0;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      text-align: center;
+      padding: 80px 0;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      margin: 64px 0;
+    }
+
+    .stat-number {
+      font-size: 64px;
+      font-weight: 100;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    /* ===== SHOWROOM GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: var(--gray-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.15);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item.tall { grid-row: span 2; aspect-ratio: auto; }
+
+    /* ===== TESTIMONIAL ===== */
+    .testimonial {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .testimonial blockquote {
+      border: none;
+      padding: 0;
+      text-align: center;
+      font-style: normal;
+    }
+
+    .testimonial .author {
+      font-size: 13px;
+      color: var(--gray-400);
+      letter-spacing: 1px;
+      margin-top: 24px;
+    }
+
+    /* ===== EDITORIAL ===== */
+    .editorial-card {
+      border: 1px solid var(--gray-100);
+      padding: 0;
+      transition: all 0.3s;
+    }
+
+    .editorial-card:hover {
+      border-color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    .editorial-thumb {
+      aspect-ratio: 16/10;
+      background: var(--gray-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-300);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .editorial-body {
+      padding: 32px;
+    }
+
+    .editorial-body .label { margin-bottom: 12px; }
+
+    .editorial-body h3 {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    .editorial-body p {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin: 0;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      text-align: center;
+      padding: 160px 48px;
+      background: var(--black);
+    }
+
+    .cta-section h2 {
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.5);
+      max-width: 500px;
+      margin: 0 auto 48px;
+      font-size: 17px;
+    }
+
+    .cta-section .btn-primary {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .contact-info h4 {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .contact-info h4:first-child { margin-top: 0; }
+
+    .contact-info p {
+      color: var(--gray-700);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .contact-info a {
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .contact-info a:hover { text-decoration: underline; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 14px 0;
+      border: none;
+      border-bottom: 1px solid var(--gray-200);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray-700);
+      background: transparent;
+      outline: none;
+      margin-bottom: 8px;
+      transition: border-color 0.3s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-bottom-color: var(--black);
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--gray-300);
+      font-weight: 300;
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 100px; }
+
+    .contact-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-form button {
+      margin-top: 32px;
+      padding: 16px 56px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .contact-form button:hover { background: var(--gray-800); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.3);
+      padding: 80px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-brand img {
+      height: 20px;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 48px;
+    }
+
+    .footer-col h4 {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 300;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 48px auto 0;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      nav .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      .grid-2, .grid-3, .grid-4, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stats { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.tall { grid-row: auto; aspect-ratio: 4/3; }
+      .footer-inner { flex-direction: column; gap: 40px; }
+      .footer-links { flex-direction: column; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+      .contact-form .form-row { grid-template-columns: 1fr; }
+      .hero-content .logo-hero { max-width: 340px; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo"></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#curadoria">Curadoria</a></li>
+    <li><a href="#showroom">Showroom</a></li>
+    <li><a href="#designers">Designers</a></li>
+    <li><a href="#editorial">Editorial</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Agende sua visita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="Desktop/EFL INSTITUCIONAL/EFL INSTITUCIONAL V2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <img src="logo-branco.png" alt="Espaço Fátima Lima" class="logo-hero" style="max-width: 680px; width: 90vw;">
+    <h1>Sua casa merece uma história para contar</h1>
+    <p>A casa do design autoral brasileiro no Maranhão. Desde 1996.</p>
+    <div class="hero-ctas">
+      <a href="#contato" class="btn-primary">Agende sua visita</a>
+      <a href="#curadoria" class="btn-secondary">Conheça a curadoria</a>
+    </div>
+  </div>
+  <div class="scroll-line"></div>
+</section>
+
+<!-- PROBLEMA + EMPATIA -->
+<section>
+  <div class="section-narrow">
+    <span class="label">A casa do design autoral brasileiro</span>
+    <h2>Sua casa deveria refletir quem você é. Não uma tendência que vence em dois anos.</h2>
+    <div class="divider"></div>
+    <p class="lead">Você trabalhou para chegar onde está. Mas quando olha para sua casa, algo não se encaixa. Móveis bonitos, mas sem alma. Decoração elegante, mas sem história.</p>
+    <p class="lead">Você merece mais do que um catálogo. Merece uma casa com significado.</p>
+  </div>
+</section>
+
+<!-- SOBRE / GUIA -->
+<section class="section-dark" id="sobre">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="label">Nossa história</span>
+        <h2>30 anos dedicados a uma única missão</h2>
+        <p class="lead">Em 1996, Fátima Lima abriu um pequeno espaço de 28m² em São Luís, unindo arte e design numa combinação inédita no Maranhão.</p>
+        <p>O que começou como um escritório de artes se transformou na referência em design autoral brasileiro do Norte-Nordeste. Do espaço inaugural à sede própria de 1.600m² na Avenida dos Holandeses, a missão nunca mudou: trazer o melhor do design nacional para quem entende que uma casa é a expressão mais autêntica de quem você é.</p>
+        <p>Curadoria. Não vendemos móveis. Selecionamos as peças mais significativas do design brasileiro para a sua casa.</p>
+      </div>
+      <div>
+        <div style="padding: 64px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px;">
+          <img src="logo-branco.png" alt="Fátima Lima" style="width: 100%; max-width: 300px; display: block; margin: 0 auto;">
+        </div>
+        <div class="stats" style="border-color: rgba(255,255,255,0.08); margin: 0;">
+          <div>
+            <div class="stat-number" style="color: var(--white);">30</div>
+            <div class="stat-label">Anos</div>
+          </div>
+          <div>
+            <div class="stat-number" style="color: var(--white);">50+</div>
+            <div class="stat-label">Designers</div>
+          </div>
+          <div>
+            <div class="stat-number" style="color: var(--white);">1600</div>
+            <div class="stat-label">m² de showroom</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote style="margin-top: 80px;">"Não trouxemos apenas móveis para o Maranhão. Trouxemos a possibilidade de as pessoas contarem quem são através das suas casas."</blockquote>
+    <p style="color: rgba(255,255,255,0.35); font-size: 13px; letter-spacing: 1px;">Fátima Lima, fundadora</p>
+  </div>
+</section>
+
+<!-- PLANO: VISITE, DESCUBRA, TRANSFORME -->
+<section>
+  <div class="section-inner">
+    <div style="text-align: center; margin-bottom: 64px;">
+      <span class="label">Como funciona</span>
+      <h2>Construir a casa dos seus sonhos<br>começa com uma visita</h2>
+    </div>
+    <div class="grid-3">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Visite</h3>
+        <p>Agende uma visita ao nosso showroom e viva a experiência do design autoral brasileiro com todos os sentidos.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Descubra</h3>
+        <p>Nossos consultores vão entender o seu momento, seu estilo e seu espaço para apresentar as peças certas para você.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Transforme</h3>
+        <p>Leve para casa peças com história, autoria e significado — que vão durar décadas e contar quem você é.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURADORIA / DESIGNERS -->
+<section class="section-dark" id="curadoria">
+  <div class="section-inner">
+    <span class="label">Nossa curadoria</span>
+    <h2>Cada peça tem uma razão<br>para estar aqui</h2>
+    <p class="lead" style="max-width: 600px;">Não trabalhamos com volume. Trabalhamos com significado. Cada designer em nosso acervo foi escolhido pela autenticidade, pela autoria e pela capacidade de criar peças que transcendem o tempo.</p>
+
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-top: 48px;" id="designers">
+      <div>
+        <div class="designer-card">
+          <h3>Sergio Rodrigues</h3>
+          <p>O mestre que definiu o design brasileiro moderno</p>
+        </div>
+        <div class="designer-card">
+          <h3>Jader Almeida</h3>
+          <p>Precisão, leveza e contemporaneidade</p>
+        </div>
+        <div class="designer-card">
+          <h3>Ricardo Fasanello</h3>
+          <p>Formas orgânicas e escultóricas</p>
+        </div>
+        <div class="designer-card">
+          <h3>Carlos Motta</h3>
+          <p>Sustentabilidade e madeira brasileira</p>
+        </div>
+        <div class="designer-card">
+          <h3>Zanine Caldas</h3>
+          <p>Brutalismo e natureza em estado puro</p>
+        </div>
+        <div class="designer-card">
+          <h3>Arthur Casas</h3>
+          <p>Arquitetura e design em diálogo</p>
+        </div>
+      </div>
+      <div>
+        <div class="designer-card">
+          <h3>Irmãos Campana</h3>
+          <p>Arte e design sem fronteiras</p>
+        </div>
+        <div class="designer-card">
+          <h3>Geraldo de Barros</h3>
+          <p>Pioneiro do design industrial brasileiro</p>
+        </div>
+        <div class="designer-card">
+          <h3>Estudiobola</h3>
+          <p>Design contemporâneo com identidade</p>
+        </div>
+        <div class="designer-card">
+          <h3>Jean Gillon</h3>
+          <p>Elegância e tradição em madeiras nobres</p>
+        </div>
+        <div class="designer-card">
+          <h3>Jacqueline Terpins</h3>
+          <p>Luz como matéria-prima do design</p>
+        </div>
+        <div class="designer-card" style="border: none;">
+          <h3 style="color: rgba(255,255,255,0.4);">+ 40 designers</h3>
+          <p>Conheça todos no showroom</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWROOM -->
+<section id="showroom">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="label">Showroom</span>
+        <h2>1.600m² de design autoral brasileiro</h2>
+        <p class="lead">Nosso showroom não é uma loja. É uma experiência. Cada ambiente é uma composição curada — com peças que conversam entre si e com quem as visita.</p>
+        <p>Na Avenida dos Holandeses, em São Luís, você encontra ambientes completos montados com o mesmo cuidado de um projeto residencial. Venha sentir as texturas, experimentar o conforto, conhecer as histórias.</p>
+        <div class="divider"></div>
+        <p style="font-size: 14px; color: var(--gray-400);">Av. dos Holandeses, Quadra 1, 1 — Calhau<br>São Luís, MA</p>
+      </div>
+      <div>
+        <div class="gallery-grid">
+          <div class="gallery-item">Ambiente 1</div>
+          <div class="gallery-item tall">Ambiente 2</div>
+          <div class="gallery-item">Ambiente 3</div>
+          <div class="gallery-item">Ambiente 4</div>
+          <div class="gallery-item">Ambiente 5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCESSO / TRANSFORMAÇÃO -->
+<section class="section-gray">
+  <div class="section-narrow" style="text-align: center;">
+    <span class="label">A transformação</span>
+    <h2>Imagine entrar na sua casa e sentir: isso sou eu</h2>
+    <p class="lead" style="color: var(--gray-600);">Uma poltrona Sergio Rodrigues que seus netos vão herdar. Uma mesa Jader Almeida onde as melhores conversas acontecem. Uma casa que não segue tendências — cria identidade.</p>
+    <p style="color: var(--gray-500);">Cada peça escolhida com intenção. Cada ambiente com personalidade. Uma casa que é, finalmente, sua.</p>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section id="editorial">
+  <div class="section-inner">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
+      <div>
+        <span class="label">Diário de Design</span>
+        <h2 style="margin-bottom: 0;">Histórias do design<br>autoral brasileiro</h2>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="editorial-card">
+        <div class="editorial-thumb">Imagem</div>
+        <div class="editorial-body">
+          <span class="label">Designer</span>
+          <h3>Sergio Rodrigues: o mestre que definiu o design brasileiro</h3>
+          <p>A história por trás da Poltrona Mole e o legado de um dos maiores designers do século XX.</p>
+        </div>
+      </div>
+      <div class="editorial-card">
+        <div class="editorial-thumb">Imagem</div>
+        <div class="editorial-body">
+          <span class="label">Curadoria</span>
+          <h3>Por que peças de design autoral valorizam com o tempo</h3>
+          <p>Entenda a diferença entre comprar um móvel e investir em uma peça com assinatura.</p>
+        </div>
+      </div>
+      <div class="editorial-card">
+        <div class="editorial-thumb">Imagem</div>
+        <div class="editorial-body">
+          <span class="label">30 anos</span>
+          <h3>De 28m² à referência do Norte-Nordeste em design</h3>
+          <p>A jornada de Fátima Lima e a história de três décadas de curadoria no Maranhão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section">
+  <h2>Sua história merece<br>ser bem contada</h2>
+  <p>Agende uma visita ao nosso showroom e descubra o design autoral brasileiro que vai transformar sua casa.</p>
+  <a href="#contato" class="btn-primary">Agende sua visita</a>
+</div>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="label">Contato</span>
+        <h2>Vamos conversar</h2>
+        <p class="lead" style="max-width: 400px;">Agende sua visita ao showroom ou fale com nossa equipe de consultores.</p>
+
+        <h4>Endereço</h4>
+        <p>Av. dos Holandeses, Quadra 1, 1<br>Calhau — São Luís, MA<br>CEP 65071-380</p>
+
+        <h4>Telefone</h4>
+        <p><a href="tel:+559832359805">(98) 3235-9805</a></p>
+
+        <h4>Redes sociais</h4>
+        <p>
+          <a href="https://instagram.com/espacofatimalima/" target="_blank">Instagram</a><br>
+          <a href="https://facebook.com/espacofatimalima" target="_blank">Facebook</a>
+        </p>
+      </div>
+
+      <div class="contact-form">
+        <form>
+          <div class="form-row">
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="E-mail">
+          </div>
+          <div class="form-row">
+            <input type="tel" placeholder="Telefone">
+            <input type="text" placeholder="Cidade">
+          </div>
+          <select>
+            <option value="" disabled selected>Sou...</option>
+            <option>Morador(a) — quero mobiliar minha casa</option>
+            <option>Arquiteto(a) / Designer de Interiores</option>
+            <option>Decorador(a)</option>
+            <option>Outro</option>
+          </select>
+          <textarea placeholder="Conte-nos sobre o que você busca..."></textarea>
+          <button type="submit">Enviar mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo-branco.png" alt="Fátima Lima">
+      <p>A casa do design autoral brasileiro.<br>Desde 1996.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#sobre">Sobre</a>
+        <a href="#curadoria">Curadoria</a>
+        <a href="#showroom">Showroom</a>
+        <a href="#designers">Designers</a>
+        <a href="#editorial">Editorial</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <a href="https://instagram.com/espacofatimalima/" target="_blank">Instagram</a>
+        <a href="https://facebook.com/espacofatimalima" target="_blank">Facebook</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="tel:+559832359805">(98) 3235-9805</a>
+        <a href="#">São Luís, MA</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>CNPJ 01.378.094/0001-08</span>
+    <span>Espaço Fátima Lima. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<!-- NAV SCROLL EFFECT -->
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+</script>
+
+</body>
+</html>
